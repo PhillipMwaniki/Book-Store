@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -30,10 +31,11 @@ public class BookResource {
     }
 
     @RequestMapping(value = "/add/image", method = RequestMethod.POST)
-    public ResponseEntity upload(@RequestParam("id") Long id, HttpServlet response, HttpServletRequest request) {
+    public ResponseEntity upload(@RequestParam("id") Long id, HttpServletResponse response, HttpServletRequest request) {
 
         try {
 //            Book book = bookService.findOne(id);
+            System.out.println("Request ID: " + id);
             MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest) request;
             Iterator<String> iterator = multipartHttpServletRequest.getFileNames();
             MultipartFile multipartFile = multipartHttpServletRequest.getFile(iterator.next());
@@ -41,7 +43,7 @@ public class BookResource {
 
             byte[] bytes = multipartFile.getBytes();
             BufferedOutputStream stream = new BufferedOutputStream(
-                        new FileOutputStream(new File("/src/main/resources/static/image/books"+fileName)));
+                        new FileOutputStream(new File("src/main/resources/static/image/books/"+fileName)));
             stream.write(bytes);
             stream.close();
 
