@@ -32,7 +32,8 @@ public class RequestFilter implements Filter{
             System.out.println("Pre-flight");
             response.setHeader("Access-Control-Allowed-Methods", "POST, GET, DELETE");
             response.setHeader("Access-Control-Allow-Max-Age", "3600");
-            response.setHeader("Access-Control-Allow-Headers", "x-requested-with, x-auth-token, access-control-request-headers, access-control-request-method, " +
+            response.setHeader("Access-Control-Allow-Headers", "content-type, x-requested-with, x-auth-token," +
+                    " access-control-request-headers, access-control-request-method, " +
                     "accept, origin, authorization, x-requested-with");
             response.setStatus(HttpServletResponse.SC_OK);
         }

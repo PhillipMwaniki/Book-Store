@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-public class Book implements Serializable{
+public class Book implements Serializable {
     public static final long serialVersionUID = 4656548L;
 
     @Id
@@ -32,8 +32,32 @@ public class Book implements Serializable{
 
     private int inStockNumber;
 
-    @Transient
-    private MultipartFile bookImage;
+//    @Transient
+//    private MultipartFile bookImage;
+
+    public Book(String title, String author, String publisher, String publicationDate, String language, String category, int numberOfPages,
+                String format, String isbn, double shippingWeight, double listPrice, double ourPrice, boolean active,
+                String description, int inStockNumber) {
+        this.title = title;
+        this.author = author;
+        this.publisher = publisher;
+        this.publicationDate = publicationDate;
+        this.language = language;
+        this.category = category;
+        this.numberOfPages = numberOfPages;
+        this.format = format;
+        this.isbn = isbn;
+        this.shippingWeight = shippingWeight;
+        this.listPrice = listPrice;
+        this.ourPrice = ourPrice;
+        this.active = active;
+        this.description = description;
+        this.inStockNumber = inStockNumber;
+//        this.bookImage = bookImage;
+    }
+
+    public Book() {
+    }
 
     public Long getId() {
         return id;
@@ -163,11 +187,11 @@ public class Book implements Serializable{
         this.inStockNumber = inStockNumber;
     }
 
-    public MultipartFile getBookImage() {
-        return bookImage;
-    }
-
-    public void setBookImage(MultipartFile bookImage) {
-        this.bookImage = bookImage;
-    }
+//    public MultipartFile getBookImage() {
+//        return bookImage;
+//    }
+//
+//    public void setBookImage(MultipartFile bookImage) {
+//        this.bookImage = bookImage;
+//    }
 }
