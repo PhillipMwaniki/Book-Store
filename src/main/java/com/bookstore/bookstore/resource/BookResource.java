@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.Iterator;
+import java.util.List;
 
 @RestController
 @RequestMapping("/book")
@@ -28,6 +28,11 @@ public class BookResource {
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public Book addBook(@RequestBody Book book) {
         return bookService.save(book);
+    }
+
+    @RequestMapping(value = "/bookList")
+    public List<Book> getBookList() {
+        return bookService.findAll();
     }
 
     @RequestMapping(value = "/add/image", method = RequestMethod.POST)
